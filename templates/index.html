@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Loan Default Prediction</title>
+  <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Hind:300" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet" type="text/css">
+</head>
+<style>
+  input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 3px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  h1 {
+    text-align: center;
+    font-size: 38px;
+  }
+  label {
+    font-size: 20px;
+    font-weight:700;
+  }
+  .button-container {
+    text-align: center;
+  }
+  .predict-button {
+    font-size: 16px;
+    padding: 12px 24px;
+  }
+
+</style>
+
+<body>
+ <div class="login">
+    <h1>Predict Loan Default</h1>
+
+    <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict') }}" method="post">
+      <label for="gender">Gender</label>
+      <input type="text" name="Gender" placeholder="[1:Male, 0:Female]" required="required" />
+      
+      <label for="married">Married</label>
+      <input type="text" name="Married" placeholder="[1:Yes, 0:No]" required="required" />
+      
+      <label for="dependents">Dependents</label>
+      <input type="text" name="Dependents" placeholder="[0, 1, 2, 3+]" required="required" />
+      
+      <label for="education">Education</label>
+      <input type="text" name="Education" placeholder="[1:Graduate, 0:Not Graduate]" required="required" />
+      
+      <label for="self_employed">Self Employed</label>
+      <input type="text" name="Self_Employed" placeholder="[1:Yes, 0:No]" required="required" />
+      
+      <label for="applicant_income">Applicant Income</label>
+      <input type="text" name="ApplicantIncome" placeholder="Applicant Income" required="required" />
+      
+      <label for="coapplicant_income">Coapplicant Income</label>
+      <input type="text" name="CoapplicantIncome" placeholder="Coapplicant Income" required="required" />
+      
+      <label for="loan_amount">Loan Amount</label>
+      <input type="text" name="LoanAmount" placeholder="Loan Amount" required="required" />
+      
+      <label for="loan_amount_term">Loan Amount Term</label>
+      <input type="text" name="Loan_Amount_Term" placeholder="Loan Amount Term" required="required" />
+      
+      <label for="credit_history">Credit History</label>
+      <input type="text" name="Credit_History" placeholder="[1:Yes, 0:No]" required="required" />
+      
+      <label for="property_area">Property Area</label>
+      <input type="text" name="Property_Area" placeholder="[0:Rural, 1:Semiurban, 2:Urban]" required="required" />
+      
+      <div class="button-container">
+        <button type="submit" class="predict-button">Predict</button>
+        </div>
+    </form>
+
+    <br>
+    <br>
+    <p>{{ prediction_text }}</p>
+ </div>
+</body>
+</html>
